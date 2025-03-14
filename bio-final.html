@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Burkhardt | Bio</title>
+
+    <!-- Import Google Font for Navigation -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: "IBM Plex Mono", monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #FFFFFF;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Styles to match film page */
+        nav {
+            margin-bottom: 30px;
+        }
+
+        nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+   nav ul li a {
+    text-decoration: none;
+    color: white;
+    /* Thicker text outline by increasing text-shadow values */
+    text-shadow: -1.5px -1.5px 0 #000, 
+                 1.5px -1.5px 0 #000, 
+                 -1.5px 1.5px 0 #000, 
+                 1.5px 1.5px 0 #000;
+    font-size: 24px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    position: relative;
+    /* Added letter spacing for more room between characters */
+    letter-spacing: 3px;
+}
+
+        /* New emoji hover styles from the first document */
+        nav ul li a.films-link, nav ul li a.bio-link, nav ul li a.cv-link {
+            position: relative;
+            display: inline-block;
+        }
+
+        .films-link span, .bio-link span, .cv-link span {
+            transition: opacity 0.2s ease;
+        }
+
+        .films-link:hover span, .bio-link:hover span, .cv-link:hover span {
+            opacity: 0;
+        }
+
+        .films-link::after, .bio-link::after, .cv-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .films-link:hover::after {
+            content: "🎞️";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .bio-link:hover::after {
+            content: "🎭";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .cv-link:hover::after {
+            content: "📝";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a i {
+            font-size: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .fa-instagram { color: #E4405F; }
+        .fa-vimeo { color: #1AB7EA; }
+        .fa-youtube { color: #FF0000; }
+
+        .social-icons a:hover i {
+            color: #117A9B;
+            transform: translateY(-2px);
+        }
+
+        /* Image Styling */
+        .image-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .image-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Content Section */
+        p {
+            font-family: "IBM Plex Mono", monospace;
+            margin-bottom: 20px;
+            max-width: 800px;
+            color: #333;
+        }
+        
+        i {
+            font-style: italic;
+            color: #117A9B;
+        }
+        
+        /* Film title links */
+        .film-link {
+            color: #117A9B;
+            font-style: italic;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .film-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .image-container img {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            nav .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .social-icons {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="wrapper">
+        <!-- Navigation with emoji hover effects -->
+        <nav>
+            <div class="nav-content">
+                <ul>
+                    <li><a href="index.html" class="films-link"><span>films</span></a></li>
+                    <li><a href="bio-final.html" class="bio-link"><span>bio</span></a></li>
+                    <li><a href="#" class="cv-link"><span>cv</span></a></li>
+                </ul>
+
+                <!-- Social Icons Section -->
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/smallmotorskills" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://vimeo.com/smallmotorskills" target="_blank">
+                        <i class="fa-brands fa-vimeo"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@smallmotorskills" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="b&wheadshotsmiling.jpg" alt="Scott Burkhardt serious headshot">
+            <img src="b&wheadshotserious.jpg" alt="Scott Burkhardt smiling headshot">
+        </div>
+
+        <!-- Content Section -->
+        <p>Scott Burkhardt is a writer and filmmaker based in New York City. He is a graduate of Columbia University's School of the Arts.</p>
+
+        <p>His thesis script, <a href="films/the-assastant.html" class="film-link">The Assastant</a>, won the New Line Cinema Development Award and additional grants from the Milos Forman Foundation, The Caucus Foundation, and the Carole and Robert Daly Foundation. The film went on to win the 20th Century Fox/Farrelly Brothers Outstanding Achievement in Comedy Award and the Student Choice Award for Best Writing. The film was nominated for a Student Academy Award and was distributed by Cinetic Media as part of their FilmBuff series on Hulu.</p>
+
+        <p>His short film, <a href="films/girls-are-strong-here.html" class="film-link">Girls Are Strong Here</a>, won a production grant from the Sun Valley Film Festival and went on to win the Grand Jury Prize @ IFF Boston and the Humanitas Prize for Best Short Film.</p>
+
+        <p>He has two new short films, <a href="films/exuvia.html" class="film-link">Exuvia</a> and <a href="we-buy-houses-film.html" class="film-link">We Buy Houses</a>, currently on the festival circuit. They remain unburdened by awards.</p>
+
+        <p>He has written for television and teaches screenwriting and television writing at New York University, the University of Pennsylvania, and in the Killer Films/Stony Brook MFA Program.</p>
+
+    </div>
+</body>
+</html>
