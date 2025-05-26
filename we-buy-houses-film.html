@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Portfolio</title>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Import Google Font for Navigation -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+    /* Film title styling */
+    .film-title {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    /* Set the font for the entire body */
+    body {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+
+    /* Wrapper for navigation and content */
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Content container to control width */
+    .content-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Main container for film content */
+    .main-container {
+        width: 100%;
+    }
+
+    /* Navigation Styles */
+    nav {
+        margin-bottom: 30px;
+        width: 100%; /* Take up full wrapper width */
+    }
+
+    nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 25px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        /* Thicker text outline by increasing text-shadow values */
+        text-shadow: -1.5px -1.5px 0 #000, 
+                     1.5px -1.5px 0 #000, 
+                     -1.5px 1.5px 0 #000, 
+                     1.5px 1.5px 0 #000;
+        font-size: 24px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+        position: relative;
+        /* Added letter spacing for more room between characters */
+        letter-spacing: 3px;
+    }
+
+    /* Emoji hover styles for nav links */
+    nav ul li a.films-link, nav ul li a.news-link, nav ul li a.merch-link, nav ul li a.about-link {
+        position: relative;
+        display: inline-block;
+    }
+
+    .films-link span, .news-link span, .merch-link span, .about-link span {
+        transition: opacity 0.2s ease;
+    }
+
+    .films-link:hover span, .news-link:hover span, .merch-link:hover span, .about-link:hover span {
+        opacity: 0;
+    }
+
+    .films-link::after, .news-link::after, .merch-link::after, .about-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .films-link:hover::after {
+        content: "🎞️";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .news-link:hover::after {
+        content: "🗞️";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .merch-link:hover::after {
+        content: "🧢";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .about-link:hover::after {
+        content: "🤔";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-icons a i {
+        font-size: 32px;
+        transition: all 0.3s ease;
+    }
+
+    .fa-instagram { color: #E4405F; }
+    .fa-vimeo { color: #1AB7EA; }
+    .fa-youtube { color: #FF0000; }
+
+    .social-icons a:hover i {
+        color: #117A9B;
+        transform: translateY(-2px);
+    }
+
+    /* Updated Image Section Styles */
+    .image-container {
+        display: flex;  /* Display images in a row */
+        flex-wrap: wrap; /* Allow images to wrap */
+        gap: 0;         /* No gap between images */
+        width: 100%;    /* Full width */
+    }
+
+    .image-container img {
+        display: block;  /* Ensures images are block-level elements */
+        width: 25%;     /* Each image takes up exactly 25% of the container */
+        height: auto;   /* Maintain original aspect ratio */
+        object-fit: contain; /* Ensure the whole image is visible */
+        flex: 0 0 auto; /* Don't grow or shrink */
+    }
+
+    /* Two-column layout for Credits and Screenings */
+    .two-column-container {
+        display: flex;
+        gap: 40px;
+        margin-top: 20px;
+    }
+
+    .credits-column {
+        flex: 2; /* Credits take up more space */
+    }
+
+    .screenings-column {
+        flex: 1; /* Screenings take up less space */
+    }
+
+    /* Paragraph Styling */
+    ul {
+        list-style-type: none; /* Removes bullet points */
+        padding: 0; /* Removes extra padding */
+        margin: 0; /* Removes default margin */
+    }
+
+    ul li {
+        margin-bottom: 10px; /* Adjust spacing between list items, if needed */
+    }
+    
+    /* Add extra space for specific lines */
+    .extra-space {
+        margin-bottom: 20px; /* Adjust this value to add more space */
+        margin-top: 20px;
+    }
+    
+    p {
+        margin: 0.5em 0; /* Default margin for all paragraphs */
+    }
+
+    /* Column headings */
+    .column-heading {
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    /* Synopsis styling - MODIFIED to allow wrapping */
+    .synopsis {
+        margin: 20px 0;
+        max-width: 1000px;
+    }
+
+    /* Responsive: Stack columns on smaller screens */
+    @media (max-width: 900px) {
+        .image-container img {
+            width: 50%; /* Two images per row */
+            height: auto;
+        }
+        
+        .two-column-container {
+            gap: 30px;
+        }
+        
+        nav .nav-content {
+            align-items: flex-start;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .image-container img {
+            width: 100%; /* One image per row */
+            height: auto;
+        }
+
+        .two-column-container {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        nav .nav-content {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center; /* Center align on smallest screens */
+        }
+
+        .social-icons {
+            margin-top: 15px;
+            padding-right: 0;
+            align-self: center; /* Center on smallest screens */
+            justify-content: center;
+            width: 100%;
+        }
+
+        p {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="content-container">
+            <!-- Updated Navigation with emoji hover effects to match index copy 4 -->
+            <nav>
+                <div class="nav-content">
+                    <ul>
+                        <li><a href="index.html" class="films-link"><span>films</span></a></li>
+                        <li><a href="news-final.html" class="news-link"><span>news</span></a></li>
+                        <li><a href="merch-final.html" class="merch-link"><span>merch</span></a></li>
+                        <li><a href="about-final.html" class="about-link"><span>about</span></a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://vimeo.com/smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-vimeo"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="main-container">
+                <!-- Image Section -->
+                <div class="image-container">
+                    <img src="films/WBH/WBH Sign in Truck.jpeg" alt="Image 1">
+                    <img src="films/WBH/WBH Jake Photo.jpeg" alt="Image 2">
+                    <img src="films/WBH/WBH Jake Lean.jpeg" alt="Image 3">
+                    <img src="films/WBH/WBH Brandon Outside.jpeg" alt="Image 4">
+                </div>
+            </div>
+
+            <!-- Synopsis -->
+            <div class="synopsis">
+                <div class="film-title">We Buy Houses</div>
+                <p style="margin-bottom: 20px;">When a house flipper encounters something unexpected at one of his properties, he is forced to reconsider the role he plays in his community.</p>
+
+                <div style="width:50%; margin:0 auto; position:relative;">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe src="https://player.vimeo.com/video/1052432374?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                                frameborder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                                style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                                title="WBH Final v.02">
+                        </iframe>
+                    </div>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <p><a href="we-buy-houses-bts.html">BTS & Director Statement</a></p>
+        </div>
+
+        <!-- Two-column layout for Credits and Screenings -->
+        <div class="two-column-container">
+            <!-- Credits Column -->
+            <div class="credits-column">
+                <p class="column-heading">Credits:</p>
+                <ul>
+                    <li>Malik - Jacob Daniel Smith</li>
+                    <li>Teddy - Brandon Burton</li>
+                    <li>Kids - Ethan Brice, Darnell Williamson & Friends</li>
+                    <li>Writer/Director - Scott Burkhardt</li>
+                    <li>Producer - Lesley Fogle</li>
+                    <li>Co-Producer - Vadim Egoul</li>
+                    <li>Co-Producer - Angela Patmon</li>
+                    <li>Co-Producer - Grant Patmon</li>
+                    <li>Cinematographer - Brandon Obey</li>
+                    <li>Editor - Jessica Mutascio</li>
+                    <li>Re-Recording Mixer - Vinny Alfano</li>
+                    <li>Sound Effects Editor/Foley Artist - Andrew Mastronardi</li>
+                    <li>Audio Post Production by - Clever People</li>
+                    <li>Composer - Nat Jenkins</li>
+                    <li>Gaffer - Alessandro Imperiale</li>
+                    <li>First AC - Jack Miller</li>
+                    <li>Boom Operator - Lizard McGee</li>
+                    <li>Assistant Editor - Erin Offenhauser</li>
+                    <li>Production Assistant - Daneil Bentley</li>
+                    <li>Production Assistant - Avery Rose</li>
+                    <li>Production Assistant - Patrick Theibeaux</li>
+                    <li>Production Assistant - Sierra Weist</li>
+                    <li class="extra-space">Special Thanks:</li>
+                    <li>Constantine Hondroulis, Marie Kovacs, Karen Patmon,</li>
+                    <li>Ian Thicksun, Justine Patmon, Brian Dubay, Denny Duffy</li>
+                    <li>Dina Zhanybevova, Erin Brennan, Aalia Rasheed,</li>
+                    <li>Paola Camacho, Cencam, Central L&G, Adella's on Oak</li>
+                </ul>
+            </div>
+
+            <!-- Screenings Column -->
+            <div class="screenings-column">
+                <p class="column-heading">Screenings:</p>
+                <p>2025 Florida Film Festival (World Premiere)</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>small motor skills</title>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+@font-face {
+  font-family: 'Lubalin Graph ITC Turner';
+  src: url('/fonts/LubalinGraphTurnerBold.woff2') format('woff2'),
+       url('/fonts/LubalinGraphTurnerBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Lubalin Graph ITC Turner', sans-serif;
+}
+        body {
+            font-family: "IBM Plex Mono", monospace;
+            background-color: #FFFFFF;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+        }
+        
+        .text-line {
+            font-size: 15vw;
+            font-weight: 700;
+            line-height: 0.9;
+            text-transform: lowercase;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+        
+        .container a:hover .text-line {
+            color: #666666;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in 0.5s forwards;
+        }
+
+        .social-icons a i {
+            font-size: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .fa-instagram { color: #E4405F; }
+        .fa-vimeo { color: #1AB7EA; }
+        .fa-youtube { color: #FF0000; }
+
+        .social-icons a:hover i {
+            color: #117A9B;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .text-line {
+                font-size: 20vw;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text-line {
+                font-size: 25vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="home.html" style="text-decoration: none; color: inherit; cursor: pointer;">
+            <div class="text-line">small</div>
+            <div class="text-line">motor</div>
+            <div class="text-line">skills</div>
+        </a>
+    </div>
+    
+    <div class="social-icons">
+        <a href="https://www.instagram.com/smallmotorskills" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://vimeo.com/smallmotorskills" target="_blank">
+            <i class="fa-brands fa-vimeo"></i>
+        </a>
+        <a href="https://www.youtube.com/@smallmotorskills" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "IBM Plex Mono", monospace;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Wrapper around content and navigation to ensure consistent width */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px; /* Adjust based on desired max width */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Navigation bar styling */
+nav {
+    width: 100%;
+    margin-bottom: 30px;
+    padding-right: 20px; /* Prevent right shift */
+}
+
+nav .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 20px; /* Consistent padding on all pages */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+nav ul li a.films-link, nav ul li a.bio-link, nav ul li a.cv-link {
+    position: relative;
+    display: inline-block;
+}
+
+nav .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.social-icons a i {
+    font-size: 32px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover i {
+    color: #117A9B;
+    transform: translateY(-2px);
+}
+
+/* Make sure images inside nav (icons) and other sections are consistent */
+.social-icons a i.fa-instagram { color: #E4405F; }
+.social-icons a i.fa-vimeo { color: #1AB7EA; }
+.social-icons a i.fa-youtube { color: #FF0000; }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    nav ul li a {
+        font-size: 22px; /* Adjust for medium screens */
+    }
+}
+
+@media (max-width: 800px) {
+    .wrapper {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+    
+    nav .nav-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .social-icons {
+        margin-top: 15px;
+        align-self: flex-start;
+    }
+
+    nav ul {
+        gap: 15px; /* Reduce gap between nav items on smaller screens */
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    nav ul li a {
+        font-size: 18px; /* Smaller font size on very small screens */
+    }
+}

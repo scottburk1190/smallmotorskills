@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Burkhardt | CV</title>
+
+    <!-- Import Google Font for Navigation -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: "IBM Plex Mono", monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #FFFFFF;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1000px; /* Changed to match we-buy-houses-film.html */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Styles to match home.html */
+        nav {
+            margin-bottom: 30px;
+            width: 100%; /* Ensure nav takes full width */
+        }
+
+        nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            /* Thicker text outline by increasing text-shadow values */
+            text-shadow: -1.5px -1.5px 0 #000, 
+                        1.5px -1.5px 0 #000, 
+                        -1.5px 1.5px 0 #000, 
+                        1.5px 1.5px 0 #000;
+            font-size: 24px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            position: relative;
+            /* Added letter spacing for more room between characters */
+            letter-spacing: 3px;
+        }
+
+        /* Updated emoji hover styles to match home.html */
+        nav ul li a.films-link, nav ul li a.bio-link, nav ul li a.cv-link, 
+        nav ul li a.merch-link, nav ul li a.news-link, nav ul li a.about-link {
+            position: relative;
+            display: inline-block;
+        }
+
+        .films-link span, .bio-link span, .cv-link span,
+        .merch-link span, .news-link span, .about-link span {
+            transition: opacity 0.2s ease;
+        }
+
+        .films-link:hover span, .bio-link:hover span, .cv-link:hover span,
+        .merch-link:hover span, .news-link:hover span, .about-link:hover span {
+            opacity: 0;
+        }
+
+        .films-link::after, .bio-link::after, .cv-link::after,
+        .merch-link::after, .news-link::after, .about-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .films-link:hover::after {
+            content: "🎞️";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .bio-link:hover::after {
+            content: "🎭";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .cv-link:hover::after {
+            content: "📝";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .merch-link:hover::after {
+            content: "🧢";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .news-link:hover::after {
+            content: "🗞️";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .about-link:hover::after {
+            content: "🤔";
+            font-size: 40px;
+            color: inherit;
+            font-weight: normal;
+            opacity: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a i {
+            font-size: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .fa-instagram { color: #E4405F; }
+        .fa-vimeo { color: #1AB7EA; }
+        .fa-youtube { color: #FF0000; }
+
+        .social-icons a:hover i {
+            color: #117A9B;
+            transform: translateY(-2px);
+        }
+
+        /* Content Section */
+        p {
+            font-family: "IBM Plex Mono", monospace;
+            margin-bottom: 20px;
+            max-width: 800px;
+            color: #333;
+        }
+        
+        i {
+            font-style: italic;
+            color: #117A9B;
+        }
+
+        /* Added content container to match film page structure */
+        .content-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Download bar and PDF viewer styles */
+        .download-bar {
+            background: #f8f8f8;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: right;
+        }
+        
+        .download-bar a {
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: calc(100vh - 50px); /* Adjusts for download bar height */
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .social-icons {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="wrapper">
+        <div class="content-container">
+            <!-- Navigation with emoji hover effects - Updated to match home.html -->
+            <nav>
+                <div class="nav-content">
+                    <ul>
+                        <li><a href="home.html" class="films-link"><span>films</span></a></li>
+                        <li><a href="news-final.html" class="news-link"><span>news</span></a></li>
+                        <li><a href="merch-final.html" class="merch-link"><span>merch</span></a></li>
+                        <li><a href="about-final.html" class="about-link"><span>about</span></a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://vimeo.com/smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-vimeo"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="download-bar">
+                <a href="sb-cv.pdf" download>Download PDF</a>
+            </div>
+            <iframe class="pdf-viewer" src="sb-cv.pdf"></iframe>
+        </div>
+    </div>
+</body>
+</html>

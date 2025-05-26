@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Portfolio - Girls Are Strong Here BTS</title>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Import Google Font for Navigation -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+   <style>
+    /* Set the font for the entire body */
+    body {
+        font-family: "IBM Plex Mono", monospace;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+
+    /* Wrapper for navigation and content */
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Content container to control width */
+    .content-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Main container for film content */
+    .main-container {
+        width: 100%;
+    }
+
+    /* Navigation Styles */
+    nav {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 25px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        text-shadow: -1.5px -1.5px 0 #000, 
+                     1.5px -1.5px 0 #000, 
+                     -1.5px 1.5px 0 #000, 
+                     1.5px 1.5px 0 #000;
+        font-size: 24px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+        position: relative;
+        letter-spacing: 3px;
+    }
+
+    /* Nav hover effects */
+    nav ul li a.films-link, nav ul li a.news-link, nav ul li a.merch-link, nav ul li a.about-link {
+        position: relative;
+        display: inline-block;
+    }
+
+    .films-link span, .news-link span, .merch-link span, .about-link span {
+        transition: opacity 0.2s ease;
+    }
+
+    .films-link:hover span, .news-link:hover span, .merch-link:hover span, .about-link:hover span {
+        opacity: 0;
+    }
+
+    .films-link::after, .news-link::after, .merch-link::after, .about-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .films-link:hover::after {
+        content: "🎞️";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .news-link:hover::after {
+        content: "🗞️";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .merch-link:hover::after {
+        content: "🧢";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .about-link:hover::after {
+        content: "🤔";
+        font-size: 40px;
+        color: inherit;
+        font-weight: normal;
+        opacity: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-icons a i {
+        font-size: 32px;
+        transition: all 0.3s ease;
+    }
+
+    .fa-instagram { color: #E4405F; }
+    .fa-vimeo { color: #1AB7EA; }
+    .fa-youtube { color: #FF0000; }
+
+    .social-icons a:hover i {
+        color: #117A9B;
+        transform: translateY(-2px);
+    }
+
+    /* Film title styling */
+    .film-title {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    /* Synopsis styling */
+    .synopsis {
+        margin: 20px 0 40px 0;
+        max-width: 1000px;
+        line-height: 1.5;
+    }
+
+    /* BTS Photo Grid */
+    .photo-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .photo-item {
+        flex-grow: 1;
+        margin-bottom: 4px;
+        overflow: hidden;
+        transform-origin: center center;
+    }
+
+    .photo-item.wide {
+        width: calc(50% - 2px);
+    }
+    
+    .photo-item.medium {
+        width: calc(33.33% - 3px);
+    }
+    
+    .photo-item.standard {
+        width: calc(25% - 3px);
+    }
+
+    .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .photo-item:hover img {
+        transform: scale(1.05) rotate(0deg) !important;
+    }
+
+    /* Paragraph Styling */
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+    }
+    
+    /* Add extra space for specific lines */
+    .extra-space {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    p {
+        margin: 0.5em 0;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 900px) {
+        .photo-item.wide {
+            width: calc(100% - 4px);
+        }
+        
+        .photo-item.medium {
+            width: calc(50% - 2px);
+        }
+        
+        .photo-item.standard {
+            width: calc(33.33% - 3px);
+        }
+
+        nav .nav-content {
+            align-items: flex-start;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .photo-item.wide {
+            width: 100%;
+        }
+        
+        .photo-item.medium {
+            width: calc(100% - 4px);
+        }
+        
+        .photo-item.standard {
+            width: calc(50% - 2px);
+        }
+        
+        nav .nav-content {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .social-icons {
+            margin-top: 15px;
+            padding-right: 0;
+            align-self: center;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .photo-item.standard {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content-container">
+            <!-- Navigation -->
+            <nav>
+                <div class="nav-content">
+                    <ul>
+                        <li><a href="home.html" class="films-link"><span>films</span></a></li>
+                        <li><a href="news-final.html" class="news-link"><span>news</span></a></li>
+                        <li><a href="merch-final.html" class="merch-link"><span>merch</span></a></li>
+                        <li><a href="about-final.html" class="about-link"><span>about</span></a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://vimeo.com/smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-vimeo"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@smallmotorskills" target="_blank">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Synopsis -->
+            <div class="synopsis">
+                              <div class="film-title">Girls Are Strong Here</div>
+
+                <p><strong>Writer/Director Statement:</strong></p>   
+                <p>Prior to 2017 the United States took in thousands of Syrian refugees every year (12,587 in 2016 alone) but those numbers have plummeted to the teens since then. Tougher immigration policies and heightened suspicions have changed the rhetoric around immigration where those seeking to enter our country under refugee status are considered suspicious before they are considered oppressed. This film counters that change in tone.</p>
+
+<p>The story is unique because it’s about a conservative immigrant coming face-to-face with prejudice but finding his own stereotypes challenged as a result. His response to his wife at the end of the film is not one of ‘we can’t live here because it is dangerous’ (a conclusion he could easily reach) but rather we can live here because our daughter will be capable.</p>
+
+<p>I want to tell great stories that stay with you beyond an initial viewing and that are rich in theme and irony. I also believe the United States derives its strength from its diversity. To come here from anywhere else is to start a journey that will challenge your assumptions and beliefs but also confirm the best in your own nature. It's not about assimilation but rather expanding your own inclusiveness to those you may not know but could with an open mind and a generous spirit.</p>          
+            </div>
+
+            <div class="main-container">
+                <!-- Structured Photo Grid with slight randomness -->
+                <div class="photo-grid" id="photoGrid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image sources with size classifications
+        const imageData = [
+            { src: "films/GASH/gash-brian-garage.jpeg", alt: "Junting_me", size: "wide" },
+            { src: "films/GASH/gash-callie-car.jpeg", alt: "Adam monitor", size: "standard" },
+            { src: "films/GASH/gash-callie-lights.jpeg", alt: "Brandon with camera", size: "medium" },
+            { src: "films/GASH/gash-callie-scott.jpeg", alt: "Jacob and Brandon", size: "standard" },
+            { src: "films/GASH/gash-candid.jpeg", alt: "Brandon camera angle", size: "medium" },
+            { src: "films/GASH/gash-ext-house.jpeg", alt: "Cooke lens", size: "standard" },
+            { src: "films/GASH/gash-fight.jpeg", alt: "Scott with coffee", size: "standard" },
+            { src: "films/GASH/gash-fight2.jpeg", alt: "Monitor shot", size: "medium" },
+            { src: "films/GASH/gash-jan-camera.jpeg", alt: "Brandon filming", size: "standard" },
+            { src: "films/GASH/gash-mark-monitor.jpeg", alt: "Group photo", size: "wide" },
+            { src: "films/GASH/gash-mona-monitor.jpeg", alt: "Jacob and Brandon outside", size: "medium" },
+            { src: "films/GASH/gash-mona-monitor2.jpeg", alt: "Scott with camera", size: "standard" },
+ 		{ src: "films/GASH/gash-npr-interview.jpeg", alt: "Monitor shot", size: "medium" },
+            { src: "films/GASH/gash-saed.jpeg", alt: "Brandon filming", size: "standard" },
+            { src: "films/GASH/gash-saed2.jpeg", alt: "Group photo", size: "wide" },
+            { src: "films/GASH/gash-slate.jpeg", alt: "Jacob and Brandon outside", size: "medium" },
+            { src: "films/GASH/gash-wide-shot.jpeg", alt: "Scott with camera", size: "standard" },
+		{ src: "films/GASH/saed-kitchen.jpeg", alt: "Saed Kitchen", size: "standard" },
+        ];
+
+        // Random value within a range
+        function randomRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Create photo grid with varied image sizes
+        function createPhotoGrid() {
+            const photoGrid = document.getElementById('photoGrid');
+            
+            imageData.forEach((img) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = `photo-item ${img.size}`;
+                
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = img.alt;
+                image.loading = 'lazy';
+                
+                // Apply a very slight random rotation for a casual feel
+                // Small enough to not disrupt the grid structure
+                const rotation = randomRange(-3, 3);
+                image.style.transform = `rotate(${rotation}deg)`;
+                
+                photoItem.appendChild(image);
+                photoGrid.appendChild(photoItem);
+            });
+        }
+
+        // Initialize when the page loads
+        window.addEventListener('load', createPhotoGrid);
+    </script>
+</body>
+</html>
