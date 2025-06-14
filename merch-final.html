@@ -23,20 +23,20 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 1000px; /* Changed to match we-buy-houses-film.html */
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Navigation Styles to match home.html */
+        /* Navigation Styles */
         nav {
             margin-bottom: 30px;
-            width: 100%; /* Ensure nav takes full width */
+            width: 100%;
         }
 
         nav .nav-content {
             display: flex;
-            justify-content: space-between; /* This spreads items to either end */
+            justify-content: space-between;
             align-items: center;
             width: 100%;
         }
@@ -52,7 +52,6 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            /* Thicker text outline by increasing text-shadow values */
             text-shadow: -1.5px -1.5px 0 #000, 
                          1.5px -1.5px 0 #000, 
                          -1.5px 1.5px 0 #000, 
@@ -61,11 +60,10 @@
             font-weight: 700;
             transition: all 0.2s ease;
             position: relative;
-            /* Added letter spacing for more room between characters */
             letter-spacing: 3px;
         }
 
-        /* Updated emoji hover styles to match home.html */
+        /* Emoji hover effects */
         nav ul li a.films-link, nav ul li a.bio-link, nav ul li a.cv-link, 
         nav ul li a.merch-link, nav ul li a.news-link, nav ul li a.about-link {
             position: relative;
@@ -170,11 +168,10 @@
             text-decoration: none;
         }
 
-        /* Fixed social icons to match the home page */
+        /* Social icons */
         .social-icons {
             display: flex;
             gap: 15px;
-            /* No margin-left needed here */
         }
 
         .social-icons a i {
@@ -191,31 +188,16 @@
             transform: translateY(-2px);
         }
 
-        /* Added content container to match home page structure */
+        /* Content container */
         .content-container {
             width: 100%;
             display: flex;
             flex-direction: column;
         }
 
-        /* Image Styling */
-        .image-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .image-container img {
-            width: 300px;
-            height: auto;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .image-container img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        /* Main container */
+        .main-container {
+            width: 100%;
         }
 
         /* Content Section */
@@ -243,25 +225,97 @@
             text-decoration: underline;
         }
 
+        /* BTS Photo Grid - matching the reference page style */
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .photo-item {
+            flex-grow: 1;
+            margin-bottom: 4px;
+            overflow: hidden;
+            transform-origin: center center;
+        }
+
+        .photo-item.wide {
+            width: calc(50% - 2px);
+        }
+        
+        .photo-item.medium {
+            width: calc(33.33% - 3px);
+        }
+        
+        .photo-item.standard {
+            width: calc(25% - 3px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05) rotate(0deg) !important;
+        }
+
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .image-container {
-                flex-direction: column;
-                align-items: center;
+        @media (max-width: 900px) {
+            .photo-item.wide {
+                width: calc(100% - 4px);
             }
             
-            .image-container img {
+            .photo-item.medium {
+                width: calc(50% - 2px);
+            }
+            
+            .photo-item.standard {
+                width: calc(33.33% - 3px);
+            }
+
+            nav .nav-content {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-item.wide {
                 width: 100%;
-                max-width: 300px;
+            }
+            
+            .photo-item.medium {
+                width: calc(100% - 4px);
+            }
+            
+            .photo-item.standard {
+                width: calc(50% - 2px);
             }
             
             nav .nav-content {
                 flex-direction: column;
                 gap: 20px;
+                align-items: center;
             }
             
             .social-icons {
                 margin-top: 15px;
+                padding-right: 0;
+                align-self: center;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .photo-item.standard {
+                width: 100%;
             }
         }
     </style>
@@ -271,7 +325,7 @@
     <!-- Main Wrapper -->
     <div class="wrapper">
         <div class="content-container">
-            <!-- Navigation with emoji hover effects - Updated to match home.html -->
+            <!-- Navigation with emoji hover effects -->
             <nav>
                 <div class="nav-content">
                     <ul>
@@ -296,10 +350,8 @@
 
             <!-- Content Section -->
             <p>Coming Soon!</p>
-        </div>
-    </div>
 
-    <div class="main-container">
+            <div class="main-container">
                 <!-- Structured Photo Grid with slight randomness -->
                 <div class="photo-grid" id="photoGrid">
                     <!-- Will be populated by JavaScript -->
@@ -307,5 +359,45 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Image sources with size classifications - using placeholder images
+        const imageData = [
+            { src: "Dina_hat1.JPG", alt: "Bio Photo 1", size: "wide" },
+            { src: "Dina_hat1.JPG", alt: "Bio Photo 2", size: "medium" },
+            { src: "Dina_hat1.JPG", alt: "Bio Photo 3", size: "standard" }
+        ];
+
+        // Random value within a range
+        function randomRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Create photo grid with varied image sizes
+        function createPhotoGrid() {
+            const photoGrid = document.getElementById('photoGrid');
+            
+            imageData.forEach((img) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = `photo-item ${img.size}`;
+                
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = img.alt;
+                image.loading = 'lazy';
+                
+                // Apply a very slight random rotation for a casual feel
+                // Small enough to not disrupt the grid structure
+                const rotation = randomRange(-3, 3);
+                image.style.transform = `rotate(${rotation}deg)`;
+                
+                photoItem.appendChild(image);
+                photoGrid.appendChild(photoItem);
+            });
+        }
+
+        // Initialize when the page loads
+        window.addEventListener('load', createPhotoGrid);
+    </script>
 </body>
 </html>
