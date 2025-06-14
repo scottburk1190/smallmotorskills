@@ -307,45 +307,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Image sources with size classifications
-        const imageData = [
-            { src: "Dina_hat1.JPG", alt: "Junting_me", size: "wide" },
-            { src: "Dina_hat2.JPG", alt: "Adam monitor", size: "standard" },
-            { src: "Dina_hat3.JPG", alt: "Brandon with camera", size: "medium" },
-        ];
-
-        // Random value within a range
-        function randomRange(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        // Create photo grid with varied image sizes
-        function createPhotoGrid() {
-            const photoGrid = document.getElementById('photoGrid');
-            
-            imageData.forEach((img) => {
-                const photoItem = document.createElement('div');
-                photoItem.className = `photo-item ${img.size}`;
-                
-                const image = document.createElement('img');
-                image.src = img.src;
-                image.alt = img.alt;
-                image.loading = 'lazy';
-                
-                // Apply a very slight random rotation for a casual feel
-                // Small enough to not disrupt the grid structure
-                const rotation = randomRange(-3, 3);
-                image.style.transform = `rotate(${rotation}deg)`;
-                
-                photoItem.appendChild(image);
-                photoGrid.appendChild(photoItem);
-            });
-        }
-
-        // Initialize when the page loads
-        window.addEventListener('load', createPhotoGrid);
-    </script>
 </body>
 </html>
