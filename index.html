@@ -33,8 +33,8 @@ body {
         
         .container {
             position: absolute;
-            top: 33%;
-            left: 40px;
+            top: 66%;
+            left: 20%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
@@ -43,7 +43,7 @@ body {
         }
         
         .text-line {
-            font-size: 54px; /* Approximately 3/4 inch at standard screen DPI */
+            font-size: 65px; /* 20% bigger than 54px */
             font-weight: 700;
             line-height: 0.9;
             text-transform: lowercase;
@@ -84,23 +84,23 @@ body {
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
-                top: 33%;
-                left: 20px;
+                top: 66%;
+                left: 15%;
                 transform: translateY(-50%);
             }
             .text-line {
-                font-size: 48px;
+                font-size: 58px; /* 20% bigger than 48px */
             }
         }
         
         @media (max-width: 480px) {
             .container {
-                top: 33%;
-                left: 15px;
+                top: 66%;
+                left: 10%;
                 transform: translateY(-50%);
             }
             .text-line {
-                font-size: 36px;
+                font-size: 43px; /* 20% bigger than 36px */
             }
         }
     </style>
