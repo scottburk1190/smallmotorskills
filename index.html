@@ -16,7 +16,6 @@
   font-weight: bold;
   font-style: normal;
 }
-
 body {
   font-family: 'Lubalin Graph ITC Turner', sans-serif;
 }
@@ -24,18 +23,19 @@ body {
     font-family: "IBM Plex Mono", monospace;
     background: url('/Still for Me.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: #000000;
+    color: rgb(244, 213, 161);
     margin: 0;
     padding: 0;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
+    position: relative;
 }
         
         .container {
+            position: absolute;
+            top: 33%;
+            left: 40px;
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             opacity: 0;
@@ -43,16 +43,15 @@ body {
         }
         
         .text-line {
-            font-size: 15vw;
+            font-size: 54px; /* Approximately 3/4 inch at standard screen DPI */
             font-weight: 700;
             line-height: 0.9;
             text-transform: lowercase;
-            text-align: center;
             transition: color 0.3s ease;
         }
         
         .container a:hover .text-line {
-            color: #666666;
+            color: rgb(80, 13, 15);
         }
         
         @keyframes fadeIn {
@@ -61,22 +60,22 @@ body {
         }
         
         .social-icons {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             gap: 15px;
-            margin-top: 40px;
             opacity: 0;
             animation: fadeIn 2s ease-in 0.5s forwards;
         }
-
         .social-icons a i {
             font-size: 32px;
             transition: all 0.3s ease;
         }
-
         .fa-instagram { color: #E4405F; }
         .fa-vimeo { color: #1AB7EA; }
         .fa-youtube { color: #FF0000; }
-
         .social-icons a:hover i {
             color: #117A9B;
             transform: translateY(-2px);
@@ -84,14 +83,24 @@ body {
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            .container {
+                top: 33%;
+                left: 20px;
+                transform: translateY(-50%);
+            }
             .text-line {
-                font-size: 20vw;
+                font-size: 48px;
             }
         }
         
         @media (max-width: 480px) {
+            .container {
+                top: 33%;
+                left: 15px;
+                transform: translateY(-50%);
+            }
             .text-line {
-                font-size: 25vw;
+                font-size: 36px;
             }
         }
     </style>
